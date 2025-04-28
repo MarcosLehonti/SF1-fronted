@@ -1,0 +1,123 @@
+.home-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .card-container {
+    display: flex;
+    gap: 30px;
+  }
+  .card {
+    background-color: #f9f9f9;
+    width: 350px;     /* Antes 280px, ahora el doble */
+    height: 600px;    /* Antes 350px, ahora el doble */
+    padding: 30px;    /* Un poco más de espacio interno */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    transition: transform 0.2s;
+    margin-top: 80px;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 500px;   /* Doble del tamaño original */
+    object-fit: contain;
+    margin-top: 20px;     /* 🔹 Bajas la imagen */
+    margin-bottom: 20px;  /* Mantienes espacio con el texto */
+  }
+  
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 14px;
+    color: #555;
+    flex-grow: 1;   /* Ocupa espacio disponible */
+  }
+  
+  .card-button {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .card-button:hover {
+    background-color: #6025e9;
+  }
+  
+  /* Responsive opcional */
+  @media (max-width: 950px) {
+    .card-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  .modal-button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-button:hover {
+    background-color: #6025e9;
+  }
+  
+  .modal-close {
+    margin-top: 15px;
+    background: none;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  .modal-close:hover {
+    background-color: #6025e9;
+
+  }
+  
