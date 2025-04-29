@@ -1,6 +1,7 @@
 // src/components/StartProjectView.jsx
 import React, { useState } from "react";
-
+///////
+///////
 const StartProjectView = () => {
   const [umlFile, setUmlFile] = useState(null);
   const [imageFile, setImageFile] = useState(null);
