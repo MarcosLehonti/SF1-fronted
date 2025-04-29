@@ -21,7 +21,7 @@ export default function GuardarProyecto() {
         return;
       }
 
-      const response = await axios.post('http://localhost:4000/api/projects', 
+      const response = await axios.post('https://sf1-backend.onrender.com/api/projects', 
         { nombre, codigo },
         {
           headers: {

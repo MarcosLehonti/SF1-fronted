@@ -16,7 +16,7 @@ const ChangePassword = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      await axios.put('http://localhost:4000/api/users/me/password', form, {
+      await axios.put('https://sf1-backend.onrender.com/api/users/me/password', form, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMessage('Contraseña actualizada correctamente');

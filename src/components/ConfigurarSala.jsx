@@ -17,7 +17,7 @@ const ConfigurarSala = () => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    socketRef.current = io('http://localhost:4000');
+    socketRef.current = io('https://sf1-backend.onrender.com');
 
     // Unirse a la sala y solicitar metadatos
     socketRef.current.emit('join-room', roomId);

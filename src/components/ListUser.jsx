@@ -34,7 +34,7 @@ const ListaUsuarios = () => {
   const handleChangeRole = async (userId, newRole) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:4000/api/users/${userId}/role`, {
+      const response = await fetch(`https://sf1-backend.onrender.com/api/users/${userId}/role`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
