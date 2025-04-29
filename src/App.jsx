@@ -15,6 +15,8 @@ import GenerarAngular from './components/GenerarAngular';
 import ListaUsuarios from './components/ListUser';
 import ConfigurarSala from './components/ConfigurarSala';
 import LogsView from './components/LogsView';
+import GuardarProyecto from './components/GuardarProyecto';
+import MisProyectos from './components/MisProyectos';
 
 
 function App() {
@@ -38,6 +40,10 @@ function App() {
         <Route path="/users" element={<ListaUsuarios/>} />
         <Route path="/diagrams/configurar-sala/:roomId" element={<ConfigurarSala />} />
         <Route path="/logs" element={<LogsView />} />
+        <Route path="/guardar-proyecto" element={<GuardarProyecto />} />
+        <Route path="/diagrams/mis-proyectos" element={<MisProyectos />} />
+
+
 
 
 

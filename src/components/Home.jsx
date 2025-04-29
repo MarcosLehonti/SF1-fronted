@@ -73,8 +73,8 @@ const Home = () => {
           <div className="modal-content">
             <h2>¿Cómo deseas trabajar?</h2>
             <p>Selecciona el modo de trabajo para tu proyecto:</p>
-            <button className="modal-button" onClick={handleSolo}>👤 Trabajar Solo</button>
-            <button className="modal-button" onClick={handleColaborativo}>🤝 Modo Colaborativo</button>
+            <button className="modal-button" onClick={handleSolo}> Trabajar Solo</button>
+            <button className="modal-button" onClick={handleColaborativo}> Modo Colaborativo</button>
             <button className="modal-close" onClick={closeModal}>Cancelar</button>
           </div>
         </div>

@@ -5,7 +5,6 @@ import '../styles/Navbar.css';
 const Navbar = () => {
   const navigate = useNavigate();
 
-  // Control de submenús
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [diagramMenuOpen, setDiagramMenuOpen] = useState(false);
 
@@ -17,7 +16,7 @@ const Navbar = () => {
     navigate('/login');
   };
 
-  // Cerrar menús al hacer clic fuera
+  // Cerrar submenús si clic fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
@@ -34,23 +33,23 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <ul>
+        <ul className="navbar-menu">
           <li><Link to="/home">Inicio</Link></li>
 
-          <li className="profile-dropdown" ref={diagramRef}>
-            <span onClick={() => setDiagramMenuOpen(!diagramMenuOpen)}>Diagramas</span>
+          <li className="menu-item" ref={diagramRef}>
+            <span onClick={() => setDiagramMenuOpen(!diagramMenuOpen)}>Diagramas ▾</span>
             {diagramMenuOpen && (
               <ul className="submenu">
-                <li><Link to="/diagrams/creatediagram">subir diagrama de clases</Link></li>
-                <li><Link to="/diagrams/createimage">subir imagen</Link></li>
+                <li><Link to="/diagrams/creatediagram">Subir diagrama de clases</Link></li>
+                <li><Link to="/diagrams/createimage">Subir imagen</Link></li>
                 <li><Link to="/diagrams/createlienzo">Crear lienzo</Link></li>
-               
+                <li><Link to="/diagrams/mis-proyectos">Ver mis proyectos</Link></li>
               </ul>
             )}
           </li>
 
-          <li className="profile-dropdown" ref={profileRef}>
-            <span onClick={() => setProfileMenuOpen(!profileMenuOpen)}>Perfil</span>
+          <li className="menu-item" ref={profileRef}>
+            <span onClick={() => setProfileMenuOpen(!profileMenuOpen)}>Perfil ▾</span>
             {profileMenuOpen && (
               <ul className="submenu">
                 <li><Link to="/profile">Usuario</Link></li>

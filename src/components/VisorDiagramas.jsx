@@ -260,7 +260,7 @@ function VisorDiagramas() {
                           }}
                           style={{ padding: "6px 12px", backgroundColor: "#4CAF50", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}
                         >
-                          💾 Guardar en LocalStorage
+                         Descargar Codigo en Angular
                         </button>
                       </div>
                     </li>

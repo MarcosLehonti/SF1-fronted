@@ -423,6 +423,11 @@ export default function CreateLienzo() {
           <button onClick={() => navigate('/generar-angular')}>
             Descargar Vista en Angular
           </button>
+
+          <button onClick={() => navigate('/guardar-proyecto')}>
+            Guardar Proyecto
+          </button>
+
         </div>
       </div>
     </>
