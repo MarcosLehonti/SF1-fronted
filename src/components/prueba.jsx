@@ -169,7 +169,7 @@ export default function CreateLienzo() {
 
   // 🔹 MODIFICADO: Conexión socket estable
   useEffect(() => {
-    socketRef.current = io('http://localhost:4000');
+    socketRef.current = io('https://sf1-backend.onrender.com');
 
     if (roomId) {
       socketRef.current.emit('join-room', roomId);
