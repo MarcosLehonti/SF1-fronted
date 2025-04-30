@@ -16,6 +16,8 @@ export default function CreateLienzo() {
   const socketRef = useRef();   // 👈 Cambio aquí
   const { roomId } = useParams();
   const navigate = useNavigate();
+  const [elementsDraft, setElementsDraft] = useState([]);
+
 
   // Funciones de creación
   const handleCreateButton = () => {
@@ -78,21 +80,41 @@ export default function CreateLienzo() {
     setOffset({ x: offsetX, y: offsetY });
   };
 
+  // const handleMouseMove = (e) => {
+  //   if (draggedId) {
+  //     const updated = elements.map((el) =>
+  //       el.id === draggedId
+  //         ? { ...el, x: e.clientX - offset.x, y: e.clientY - offset.y }
+  //         : el
+  //     );
+  //     syncElementsmove(updated);
+  //   }
+  // };
+
+
   const handleMouseMove = (e) => {
     if (draggedId) {
-      const updated = elements.map((el) =>
+      const updated = elementsDraft.map((el) =>
         el.id === draggedId
           ? { ...el, x: e.clientX - offset.x, y: e.clientY - offset.y }
           : el
       );
-      syncElementsmove(updated);
+      setElementsDraft(updated); // solo afecta la vista local
     }
   };
+  
+
+  // const handleMouseUp = () => {
+  //   setDraggedId(null);
+  // };
+
 
   const handleMouseUp = () => {
     setDraggedId(null);
+    setElements(elementsDraft); // actualiza el estado "oficial"
+    socketRef.current.emit('update-elements', { roomid: roomId, elements: elementsDraft }); // ✅ emitir lo correcto
   };
-
+  
   // Eliminar
   const handleDelete = (id) => {
     syncElements(elements.filter((el) => el.id !== id));
@@ -180,13 +202,25 @@ export default function CreateLienzo() {
       socketRef.current.emit('join-room', roomId);
     }
 
+    // socketRef.current.on('load-elements', (loadedElements) => {
+    //   setElements(loadedElements);
+    // });
+
+    // socketRef.current.on('receive-elements', (updatedElements) => {
+    //   setElements(updatedElements);
+    // });
+
+
     socketRef.current.on('load-elements', (loadedElements) => {
       setElements(loadedElements);
+      setElementsDraft(loadedElements);
     });
-
+    
     socketRef.current.on('receive-elements', (updatedElements) => {
       setElements(updatedElements);
+      setElementsDraft(updatedElements);
     });
+    
 
     return () => {
       socketRef.current.disconnect();
@@ -339,7 +373,7 @@ export default function CreateLienzo() {
         <div className="lienzo-contenedor">
           <div className="lienzo">
             <h2>🧪 Lienzo de prueba</h2>
-            {elements.map((el) => {
+            {elementsDraft.map((el) => {
               if (el.type === "button") {
                 return (
                   <Boton
