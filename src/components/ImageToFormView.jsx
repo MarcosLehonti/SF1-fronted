@@ -162,38 +162,109 @@ const ImageToFormView = () => {
           return { type: "input", label: line };
         });
 
-        // ✅ Generación de HTML con tabla incluida
         const code = `
-<form>
-  ${elements.map(field => {
-    if (field.type === "input") {
-      return '  <label>' + field.label + '</label>\n  <input type="text" name="' + field.label + '" />';
-    } else if (field.type === "email") {
-      return '  <label>' + field.label + '</label>\n  <input type="email" name="' + field.label + '" />';
-    } else if (field.type === "password") {
-      return '  <label>' + field.label + '</label>\n  <input type="password" name="' + field.label + '" />';
-    } else if (field.type === "tel") {
-      return '  <label>' + field.label + '</label>\n  <input type="tel" name="' + field.label + '" />';
-    } else if (field.type === "table") {
-      return (
-        '  <table border="1">\n' +
-        '    <thead>\n' +
-        '      <tr><th>Columna 1</th><th>Columna 2</th><th>Columna 3</th></tr>\n' +
-        '    </thead>\n' +
-        '    <tbody>\n' +
-        '      <tr><td>Dato 1</td><td>Dato 2</td><td>Dato 3</td></tr>\n' +
-        '      <tr><td>Dato 4</td><td>Dato 5</td><td>Dato 6</td></tr>\n' +
-        '      <tr><td>Dato 7</td><td>Dato 8</td><td>Dato 9</td></tr>\n' +
-        '    </tbody>\n' +
-        '  </table>'
-      );
-    } else if (field.type === "button") {
-      return '  <button type="submit">' + field.label + '</button>';
-    }
-    return "";
-  }).join("\n")}
-</form>
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Formulario Generado</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f8f9fa;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+            }
+        
+            .form-wrapper {
+              background: white;
+              padding: 40px;
+              border-radius: 12px;
+              box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+              width: 100%;
+              max-width: 600px;
+            }
+        
+            form {
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+            }
+        
+            label {
+              font-weight: bold;
+              margin-bottom: 6px;
+            }
+        
+            input, button, table {
+              font-size: 16px;
+              padding: 10px;
+              border-radius: 6px;
+              border: 1px solid #ccc;
+            }
+        
+            button {
+              background-color: #007bff;
+              color: white;
+              border: none;
+              cursor: pointer;
+            }
+        
+            table {
+              border-collapse: collapse;
+              width: 100%;
+            }
+        
+            th, td {
+              border: 1px solid #999;
+              padding: 8px;
+              text-align: center;
+            }
+        
+            th {
+              background-color: #f0f0f0;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="form-wrapper">
+            <form>
+              ${elements.map(field => {
+                if (field.type === "input") {
+                  return `<label>${field.label}</label><input type="text" name="${field.label}" />`;
+                } else if (field.type === "email") {
+                  return `<label>${field.label}</label><input type="email" name="${field.label}" />`;
+                } else if (field.type === "password") {
+                  return `<label>${field.label}</label><input type="password" name="${field.label}" />`;
+                } else if (field.type === "tel") {
+                  return `<label>${field.label}</label><input type="tel" name="${field.label}" />`;
+                } else if (field.type === "button") {
+                  return `<button type="submit">${field.label}</button>`;
+                } else if (field.type === "table") {
+                  return (
+                    '<table>\n' +
+                    '  <thead><tr><th>Columna 1</th><th>Columna 2</th><th>Columna 3</th></tr></thead>\n' +
+                    '  <tbody>\n' +
+                    '    <tr><td>Dato 1</td><td>Dato 2</td><td>Dato 3</td></tr>\n' +
+                    '    <tr><td>Dato 4</td><td>Dato 5</td><td>Dato 6</td></tr>\n' +
+                    '    <tr><td>Dato 7</td><td>Dato 8</td><td>Dato 9</td></tr>\n' +
+                    '  </tbody>\n' +
+                    '</table>'
+                  );
+                }
+                return "";
+              }).join("\n")}
+            </form>
+          </div>
+        </body>
+        </html>
         `.trim();
+        
 
         // Redirigir a la nueva vista con datos
         navigate("/vista-generada", {
