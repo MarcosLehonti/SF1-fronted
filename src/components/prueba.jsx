@@ -85,7 +85,7 @@ export default function CreateLienzo() {
           ? { ...el, x: e.clientX - offset.x, y: e.clientY - offset.y }
           : el
       );
-      syncElements(updated);
+      syncElementsmove(updated);
     }
   };
 
@@ -148,6 +148,11 @@ export default function CreateLienzo() {
     setElements(newElements);
     socketRef.current.emit('update-elements', { roomid: roomId, elements: newElements });
   };
+
+  const syncElementsmove = (newElements) => {
+    setElements(newElements); // 🔹 solo actualiza, no emite
+  };
+  
 
   // Generar nuevo roomId si no existe
   useEffect(() => {
