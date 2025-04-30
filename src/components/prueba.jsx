@@ -89,20 +89,10 @@ export default function CreateLienzo() {
     }
   };
 
-  // const handleMouseUp = () => {
-  //   setDraggedId(null);
-  // };
-
   const handleMouseUp = () => {
     setDraggedId(null);
-  
-    // Emitir el movimiento final al soltar el mouse
-    socketRef.current.emit('update-elements', {
-      roomid: roomId,
-      elements,
-    });
   };
-  
+
   // Eliminar
   const handleDelete = (id) => {
     syncElements(elements.filter((el) => el.id !== id));
@@ -154,14 +144,10 @@ export default function CreateLienzo() {
   };
 
   // 🔹 MODIFICADO: syncElements con socketRef
-  // const syncElements = (newElements) => {
-  //   setElements(newElements);
-  //   socketRef.current.emit('update-elements', { roomid: roomId, elements: newElements });
-  // };
   const syncElements = (newElements) => {
-    setElements(newElements); // ya NO emite
+    setElements(newElements);
+    socketRef.current.emit('update-elements', { roomid: roomId, elements: newElements });
   };
-  
 
   // Generar nuevo roomId si no existe
   useEffect(() => {
