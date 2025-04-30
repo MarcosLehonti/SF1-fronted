@@ -122,6 +122,43 @@ const Manual = () => {
         </section>
 
 
+        {/* Sección 5: Generar mediante fotos */}
+      <section className="manual-section">
+        <img
+          src={require("../assets/foto-boceto.jpg")} 
+          alt="Generar mediante fotos"
+          className="section-image"
+        />
+        <h2 className="section-title">5️⃣ Generar mediante fotos</h2>
+        <p className="section-description">
+          En este apartado encontrarás los pasos a seguir para dibujar tu boceto correctamente y que el sistema lo interprete de forma automática.
+        </p>
+
+        <div className="option-card">
+          <ul>
+            <li>
+              ✏️ Usa texto claro y legible en tu imagen o dibujo. El sistema puede reconocer palabras clave.
+            </li>
+            <li>
+              🧠 Las siguientes palabras son detectadas automáticamente:
+              <ul style={{ marginTop: "10px" }}>
+                <li><strong>Nombre</strong>, <strong>Correo</strong>: genera campos de entrada de texto.</li>
+                <li><strong>Guardar</strong>, <strong>Cancelar</strong>: genera botones funcionales.</li>
+                <li><strong>Tabla</strong>: genera automáticamente una tabla visual con tres columnas y tres filas.</li>
+              </ul>
+            </li>
+            <li>
+              📷 Puedes subir fotos escaneadas o imágenes dibujadas a mano, siempre que el texto sea legible.
+            </li>
+            <li>
+              🚀 Una vez cargada la imagen, se mostrará una vista previa y el formulario generado al instante.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+
+
       </div>
     );
   };
