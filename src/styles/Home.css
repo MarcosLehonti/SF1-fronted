@@ -5,16 +5,20 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  padding: 20px; /* para evitar que los elementos se salgan en móviles */
 }
 
 .card-container {
   display: flex;
   gap: 30px;
+  flex-wrap: wrap; /* 🔹 permite que las tarjetas bajen si no caben */
+  justify-content: center; /* 🔹 centra las tarjetas cuando hay menos espacio */
 }
 
 .card {
   background-color: #f9f9f9;
   width: 350px;
+  max-width: 90vw; /* 🔹 asegura que no se salga en móviles */
   height: 600px;
   padding: 30px;
   border-radius: 10px;
@@ -30,6 +34,7 @@
 .card-image {
   width: 100%;
   height: 500px;
+  max-height: 50vh; /* 🔹 asegura que no se pase en pantallas pequeñas */
   object-fit: contain;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -50,31 +55,61 @@
   flex-grow: 1;
 }
 
-/* 🔹 Botón principal de la tarjeta */
 .card-button {
   padding: 10px 20px;
   background-color: #000000;
   color: white;
   border: none;
-  border-radius: 12px; /* 🔥 MÁS REDONDEADO */
+  border-radius: 12px;
   cursor: pointer;
   margin-top: 20px;
-  transition: background-color 0.3s ease; /* 🔥 animación suave */
+  transition: background-color 0.3s ease;
 }
 
 .card-button:hover {
   background-color: #6025e9;
 }
 
-/* Responsive para móviles */
 @media (max-width: 950px) {
   .card-container {
     flex-direction: column;
     align-items: center;
   }
+
+  .card {
+    height: auto; /* 🔹 ajusta la altura en móviles */
+  }
+
+  .card-image {
+    height: auto;
+    max-height: 300px;
+  }
 }
 
-/* 🔹 Modal overlay */
+@media (max-width: 480px) {
+  .card {
+    padding: 20px;
+  }
+
+  .card h2 {
+    font-size: 16px;
+  }
+
+  .card p {
+    font-size: 13px;
+  }
+
+  .card-button {
+    padding: 8px 16px;
+  }
+
+  .modal-content {
+    width: 90vw; /* 🔹 más flexible en móviles */
+    padding: 20px;
+  }
+}
+
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -88,16 +123,15 @@
   z-index: 1000;
 }
 
-/* 🔹 Contenido del Modal */
 .modal-content {
   background: white;
   padding: 30px;
   border-radius: 10px;
   text-align: center;
   width: 300px;
+  max-width: 90vw; /* 🔹 para no salirse en pantallas pequeñas */
 }
 
-/* 🔹 Botón de Confirmar del Modal */
 .modal-button {
   margin: 10px 0;
   padding: 10px 20px;
@@ -105,24 +139,23 @@
   background-color: #000000;
   color: white;
   border: none;
-  border-radius: 12px; /* 🔥 MÁS REDONDEADO */
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* 🔥 animación suave */
+  transition: background-color 0.3s ease;
 }
 
 .modal-button:hover {
   background-color: #6025e9;
 }
 
-/* 🔹 Botón de Cerrar Modal */
 .modal-close {
   margin-top: 15px;
   background: none;
   border: none;
   color: #000000;
-  border-radius: 12px; /* 🔥 MÁS REDONDEADO */
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* 🔥 animación suave */
+  transition: background-color 0.3s ease;
 }
 
 .modal-close:hover {

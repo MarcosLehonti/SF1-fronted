@@ -1,93 +1,135 @@
-/* Asegura que el body y html ocupen toda la pantalla */
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    background-color: #f4f6f8;
-  }
-  
-  /* Contenedor principal */
-  .login-container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Formulario */
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Un poco más de espacio entre elementos */
-    padding: 50px; /* Más espacio interno */
-    border-radius: 12px;
-    background-color: hsl(0, 0%, 100%);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    width: 450px; /* Más ancho */
-    min-height: 600px; /* Más alto para que el SVG y todo quepan cómodos */
-    text-align: center;
-  }
-
-  .login-image {
-    width: 100%;
-    max-height: 200px;
-    object-fit: contain;
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  
-  .login-image-left img {
-    width: 700px;         /* Ajusta el tamaño, hazla más pequeña */
-    height: auto;
-    transform: translateX(-150px);  /* Mover hacia la izquierda */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  background-color: #f4f6f8;
 }
 
-  .login-form h2 {
-    margin-bottom: 10px;
+/* Contenedor principal */
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* 🔹 Permite envolver contenido en móviles */
+  padding: 20px;
+}
+
+/* Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px;
+  border-radius: 12px;
+  background-color: hsl(0, 0%, 100%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  width: 450px;
+  max-width: 90vw; /* 🔹 Para que no se desborde en móviles */
+  min-height: 600px;
+  text-align: center;
+}
+
+.login-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.login-image-left img {
+  width: 700px;
+  height: auto;
+  transform: translateX(-150px);
+  max-width: 90vw; /* 🔹 Asegura que se adapte a pantallas pequeñas */
+}
+
+.login-form h2 {
+  margin-bottom: 10px;
+}
+
+.login-form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  transform: scale(1.05);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-color: #000;
+}
+
+.login-form button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-form button:hover {
+  background-color: #333;
+}
+
+.login-message {
+  margin-top: 10px;
+  color: rgb(32, 100, 55);
+  font-size: 14px;
+}
+
+/* 🔹 RESPONSIVE */
+@media (max-width: 1024px) {
+  .login-image-left img {
+    width: 500px;
+    transform: translateX(0); /* 🔹 No mover en tablets */
   }
-  
-  .login-form input {
-    padding: 10px;
-    font-size: 24px;
+
+  .login-form {
+    padding: 40px;
   }
-  
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-image-left img {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    transform: none;
+  }
+
+  .login-form {
+    min-height: auto;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form input,
   .login-form button {
-    padding: 10px;
-    font-size: 16px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .login-form button:hover {
-    background-color: #333;
-  }
-  
-  .login-message {
-    margin-top: 10px;
-    color: rgb(32, 100, 55);
     font-size: 14px;
+    padding: 8px;
   }
-  
-  .login-form input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: all 0.2s ease; /* transición suave */
+
+  .login-form {
+    padding: 20px;
   }
-  
-  /* 👇 Este efecto se activa cuando haces clic en el input */
-  .login-form input:focus {
-    outline: none;
-    transform: scale(1.05); /* aumenta ligeramente el tamaño */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border-color: #000;
+
+  .login-message {
+    font-size: 13px;
   }
-  
+}

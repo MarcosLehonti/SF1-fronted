@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #000; /* negro mantenido */
+  background-color: #000;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -12,6 +12,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-menu {
@@ -28,7 +31,8 @@
   position: relative;
 }
 
-.navbar-menu a, .menu-item span {
+.navbar-menu a,
+.menu-item span {
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -37,7 +41,8 @@
   transition: color 0.2s ease;
 }
 
-.navbar-menu a:hover, .menu-item span:hover {
+.navbar-menu a:hover,
+.menu-item span:hover {
   color: #00c0ff;
 }
 
@@ -84,4 +89,51 @@
 .submenu li a:hover {
   background-color: #222;
   color: #00c0ff;
+}
+
+/* 🔹 RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .navbar-menu a,
+  .menu-item span,
+  .logout-button {
+    font-size: 16px;
+  }
+
+  .submenu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .submenu li {
+    padding: 8px 0;
+  }
+
+  .submenu li a {
+    font-size: 14px;
+    padding-left: 15px;
+    color: #ddd;
+  }
+
+  .submenu li a:hover {
+    background-color: #111;
+    color: #00c0ff;
+  }
 }
