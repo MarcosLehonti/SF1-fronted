@@ -18,6 +18,8 @@ import LogsView from './components/LogsView';
 import GuardarProyecto from './components/GuardarProyecto';
 import MisProyectos from './components/MisProyectos';
 import Manual from './components/Manual';
+import ProtectedRoute from './components/ProtectedRoute';
+
 
 
 function App() {
