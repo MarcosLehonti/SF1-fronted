@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid"; // 👈 para generar el ID único de la sal
 import Navbar from "./Navbar";
 import "../styles/vista-generada.css";
 
+
 const VistaGenerada = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,6 +17,11 @@ const VistaGenerada = () => {
         generatedCode,
       },
     });
+  };
+
+  const handleDescargarYRedirigir = () => {
+    localStorage.setItem("htmlGenerado", generatedCode);
+    navigate("/generar-angular");
   };
 
   return (
@@ -38,14 +44,42 @@ const VistaGenerada = () => {
               <form className="form-generado">
                 {formFields.map((field, idx) => (
                   <div key={idx} className="form-item">
-                    {field.type === "input" && (
+                    {["input", "email", "password", "tel"].includes(field.type) && (
                       <>
                         <label>{field.label}</label>
-                        <input type="text" placeholder={field.label} />
+                        <input
+                          type={field.type === "input" ? "text" : field.type}
+                          placeholder={field.label}
+                        />
                       </>
                     )}
+
                     {field.type === "button" && (
                       <button type="submit">{field.label}</button>
+                    )}
+
+                    {field.type === "table" && (
+                      <table border="1" style={{ marginTop: "10px", width: "100%", textAlign: "center" }}>
+                        <thead>
+                          <tr>
+                            <th>Columna 1</th>
+                            <th>Columna 2</th>
+                            <th>Columna 3</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Dato 1</td>
+                            <td>Dato 2</td>
+                            <td>Dato 3</td>
+                          </tr>
+                          <tr>
+                            <td>Dato 4</td>
+                            <td>Dato 5</td>
+                            <td>Dato 6</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     )}
                   </div>
                 ))}
@@ -56,12 +90,11 @@ const VistaGenerada = () => {
               <h4>📄 Código HTML Generado</h4>
               <textarea readOnly value={generatedCode}></textarea>
               <br />
-              <a
-                href={`data:text/html;charset=utf-8,${encodeURIComponent(generatedCode)}`}
-                download="formulario-generado.html"
-              >
-                <button>Descargar código</button>
-              </a>
+
+              {/* ✅ BOTÓN MODIFICADO */}
+              <button onClick={handleDescargarYRedirigir}>
+                Descargar código
+              </button>
 
               {/* 👇 ESTE ES EL NUEVO BOTÓN */}
               <button style={{ marginTop: "10px" }} onClick={handleCompartirSala}>

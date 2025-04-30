@@ -15,7 +15,6 @@ const StartProjectView = () => {
         <h2>Empieza tu proyecto</h2>
         <p>Selecciona el tipo de archivo con el que quieres generar la interfaz</p>
 
-        <button onClick={() => setViewType("uml")}>Subir archivo UML</button>
         <button onClick={() => setViewType("imagen")}>Subir imagen dibujada</button>
 
         <div className="start-view-area">

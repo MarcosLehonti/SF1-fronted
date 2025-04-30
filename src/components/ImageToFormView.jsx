@@ -115,9 +115,6 @@
 //   );
 // };
 
-// export default ImageToFormView;
-
-
 
 import React, { useState } from "react";
 import Tesseract from "tesseract.js";
@@ -139,21 +136,53 @@ const ImageToFormView = () => {
       .then(({ data: { text } }) => {
         const lines = text.split("\n").map(l => l.trim()).filter(Boolean);
 
+        // ✅ Reconocimiento mejorado con "tabla"
         const elements = lines.map((line) => {
-          if (line.toLowerCase().includes("enviar") || line.toLowerCase().includes("submit")) {
+          const lower = line.toLowerCase();
+
+          const isButton = ["enviar", "submit", "registrar", "aceptar", "guardar", "buscar", "cancelar"]
+            .some(word => lower.includes(word));
+          if (isButton) {
             return { type: "button", label: line };
-          } else {
-            return { type: "input", label: line };
           }
+
+          if (lower.includes("correo") || lower.includes("email")) {
+            return { type: "email", label: line };
+          }
+          if (lower.includes("contraseña") || lower.includes("password")) {
+            return { type: "password", label: line };
+          }
+          if (lower.includes("teléfono") || lower.includes("telefono") || lower.includes("celular")) {
+            return { type: "tel", label: line };
+          }
+          if (lower.includes("tabla")) {
+            return { type: "table", label: line };
+          }
+
+          return { type: "input", label: line };
         });
 
+        // ✅ Generación de HTML con tabla incluida
         const code = `
 <form>
   ${elements.map(field => {
     if (field.type === "input") {
-      return `  <label>${field.label}</label>\n  <input type="text" name="${field.label}" />`;
+      return '  <label>' + field.label + '</label>\n  <input type="text" name="' + field.label + '" />';
+    } else if (field.type === "email") {
+      return '  <label>' + field.label + '</label>\n  <input type="email" name="' + field.label + '" />';
+    } else if (field.type === "password") {
+      return '  <label>' + field.label + '</label>\n  <input type="password" name="' + field.label + '" />';
+    } else if (field.type === "tel") {
+      return '  <label>' + field.label + '</label>\n  <input type="tel" name="' + field.label + '" />';
+    } else if (field.type === "table") {
+      return (
+        '  <table border="1">\n' +
+        '    <tr><th>Columna 1</th><th>Columna 2</th></tr>\n' +
+        '    <tr><td>Dato 1</td><td>Dato 2</td></tr>\n' +
+        '  </table>'
+      );
     } else if (field.type === "button") {
-      return `  <button type="submit">${field.label}</button>`;
+      return '  <button type="submit">' + field.label + '</button>';
     }
     return "";
   }).join("\n")}
@@ -175,13 +204,12 @@ const ImageToFormView = () => {
 
   return (
     <>
-    <Navbar/>
-    
-    <div style={{ textAlign: "center" }}>
-      <h3>Sube tu imagen dibujada</h3>
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-      {loading && <p>Procesando imagen...</p>}
-    </div>
+      <Navbar />
+      <div style={{ textAlign: "center" }}>
+        <h3>Sube tu imagen dibujada</h3>
+        <input type="file" accept="image/*" onChange={handleImageUpload} />
+        {loading && <p>Procesando imagen...</p>}
+      </div>
     </>
   );
 };
