@@ -1,9 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid"; // 👈 para generar el ID único de la sala
+import { v4 as uuidv4 } from "uuid";
 import Navbar from "./Navbar";
-import "../styles/vista-generada.css";
-
 
 const VistaGenerada = () => {
   const location = useLocation();
@@ -27,20 +25,103 @@ const VistaGenerada = () => {
   return (
     <>
       <Navbar />
+
+      {/*  Estilos embebidos para vista generada */}
+      <style>{`
+        body {
+          margin: 0;
+          background-color: #f8f9fa;
+        }
+
+        .vista-container {
+          font-family: Arial, sans-serif;
+          padding: 30px 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .form-wrapper {
+          background: white;
+          padding: 40px;
+          border-radius: 12px;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+          width: 100%;
+          max-width: 600px;
+          margin-bottom: 30px;
+        }
+
+        .form-generado {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .form-generado label {
+          font-weight: bold;
+          margin-bottom: 6px;
+        }
+
+        .form-generado input,
+        .form-generado button,
+        .form-generado table {
+          font-size: 16px;
+          padding: 10px;
+          border-radius: 6px;
+          border: 1px solid #ccc;
+        }
+
+        .form-generado button {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          cursor: pointer;
+        }
+
+        .form-generado table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        .form-generado th,
+        .form-generado td {
+          border: 1px solid #999;
+          padding: 8px;
+          text-align: center;
+        }
+
+        .form-generado th {
+          background-color: #f0f0f0;
+        }
+
+        .codigo-generado {
+          width: 90%;
+          max-width: 700px;
+          text-align: center;
+        }
+
+        .codigo-generado textarea {
+          width: 100%;
+          height: 200px;
+          font-family: monospace;
+          margin-bottom: 10px;
+        }
+      `}</style>
+
       <div className="vista-container">
         <h2>Formulario generado a partir de la imagen</h2>
 
         {imagePreview && (
           <>
-            <h4>✅ Esto me pasaste:</h4>
-            <img className="vista-imagen" src={imagePreview} alt="Bosquejo" />
+            <h4> Esto me pasaste:</h4>
+            <img className="vista-imagen" src={imagePreview} alt="Bosquejo" style={{ maxWidth: "100%", marginBottom: "20px" }} />
           </>
         )}
 
         {formFields && (
           <>
-            <div className="formulario-generado">
-              <h4>✨ Esto generé a partir de tu dibujo:</h4>
+            <div className="formulario-generado form-wrapper">
+              <h4>✨ Esto es un ejemplo de cómo se vería tu vista:</h4>
               <form className="form-generado">
                 {formFields.map((field, idx) => (
                   <div key={idx} className="form-item">
@@ -59,7 +140,7 @@ const VistaGenerada = () => {
                     )}
 
                     {field.type === "table" && (
-                      <table border="1" style={{ marginTop: "10px", width: "100%", textAlign: "center" }}>
+                      <table>
                         <thead>
                           <tr>
                             <th>Columna 1</th>
@@ -78,6 +159,11 @@ const VistaGenerada = () => {
                             <td>Dato 5</td>
                             <td>Dato 6</td>
                           </tr>
+                          <tr>
+                            <td>Dato 7</td>
+                            <td>Dato 8</td>
+                            <td>Dato 9</td>
+                          </tr>
                         </tbody>
                       </table>
                     )}
@@ -90,13 +176,9 @@ const VistaGenerada = () => {
               <h4>📄 Código HTML Generado</h4>
               <textarea readOnly value={generatedCode}></textarea>
               <br />
-
-              {/* ✅ BOTÓN MODIFICADO */}
               <button onClick={handleDescargarYRedirigir}>
                 Descargar código
               </button>
-
-              {/* 👇 ESTE ES EL NUEVO BOTÓN */}
               <button style={{ marginTop: "10px" }} onClick={handleCompartirSala}>
                 🔗 Compartir en Sala
               </button>
