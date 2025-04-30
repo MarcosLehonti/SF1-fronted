@@ -177,8 +177,14 @@ const ImageToFormView = () => {
     } else if (field.type === "table") {
       return (
         '  <table border="1">\n' +
-        '    <tr><th>Columna 1</th><th>Columna 2</th></tr>\n' +
-        '    <tr><td>Dato 1</td><td>Dato 2</td></tr>\n' +
+        '    <thead>\n' +
+        '      <tr><th>Columna 1</th><th>Columna 2</th><th>Columna 3</th></tr>\n' +
+        '    </thead>\n' +
+        '    <tbody>\n' +
+        '      <tr><td>Dato 1</td><td>Dato 2</td><td>Dato 3</td></tr>\n' +
+        '      <tr><td>Dato 4</td><td>Dato 5</td><td>Dato 6</td></tr>\n' +
+        '      <tr><td>Dato 7</td><td>Dato 8</td><td>Dato 9</td></tr>\n' +
+        '    </tbody>\n' +
         '  </table>'
       );
     } else if (field.type === "button") {
