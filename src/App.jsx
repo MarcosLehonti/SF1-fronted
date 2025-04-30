@@ -17,6 +17,7 @@ import ConfigurarSala from './components/ConfigurarSala';
 import LogsView from './components/LogsView';
 import GuardarProyecto from './components/GuardarProyecto';
 import MisProyectos from './components/MisProyectos';
+import Manual from './components/Manual';
 
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
         <Route path="/logs" element={<LogsView />} />
         <Route path="/guardar-proyecto" element={<GuardarProyecto />} />
         <Route path="/diagrams/mis-proyectos" element={<MisProyectos />} />
+        <Route path="/manual" element={<Manual />} />
+
+
 
 
 
