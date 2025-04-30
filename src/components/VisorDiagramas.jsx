@@ -156,39 +156,42 @@ function VisorDiagramas() {
 
   const generarHTMLCrudCompleto = (clase) => {
     const formHTML = `
-<form>
-  ${clase.atributos.map(attr => `
-  <div>
-    <label>${attr}:</label>
-    <input type="text" name="${attr}" />
+  <div style="background:#fff; padding:30px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); max-width:600px; margin:auto; font-family:sans-serif">
+    <form style="display:flex; flex-direction:column; gap:16px;">
+      ${clase.atributos.map(attr => `
+        <div>
+          <label style="font-weight:bold; margin-bottom:4px; display:block">${attr}:</label>
+          <input type="text" name="${attr}" style="padding:8px; border:1px solid #ccc; border-radius:5px; width:100%;" />
+        </div>
+      `).join('')}
+      <button type="submit" style="background-color:#007bff; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">
+        Agregar
+      </button>
+    </form>
+  
+    <table style="margin-top:30px; width:100%; border-collapse:collapse; font-size:14px;">
+      <thead>
+        <tr style="background-color:#f0f0f0;">
+          ${clase.atributos.map(attr => `<th style="border:1px solid #999; padding:8px;">${attr}</th>`).join('')}
+          <th style="border:1px solid #999; padding:8px;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          ${clase.atributos.map(() => `<td style="border:1px solid #ccc; padding:8px;">...</td>`).join('')}
+          <td style="border:1px solid #ccc; padding:8px;">
+            <button style="margin-right:4px;">Editar</button>
+            <button>Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  `).join('')}
-  <button type="submit">Agregar</button>
-</form>
-    `;
-
-    const tableHTML = `
-<table border="1">
-  <thead>
-    <tr>
-      ${clase.atributos.map(attr => `<th>${attr}</th>`).join('')}
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      ${clase.atributos.map(() => `<td>...</td>`).join('')}
-      <td>
-        <button>Editar</button>
-        <button>Eliminar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-    `;
-
-    return formHTML + '\n\n' + tableHTML;
+    `.trim();
+  
+    return formHTML;
   };
+  ;
 
   const copiarAlPortapapeles = (codigo) => {
     navigator.clipboard.writeText(codigo);
