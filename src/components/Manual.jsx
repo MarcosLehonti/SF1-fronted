@@ -5,6 +5,7 @@ import usoLienzoImg from '../assets/uso-lienzo.jpg';
 
 import configuracionSalaImg from '../assets/configuracionsala.jpg'; 
 import angularImg from '../assets/angular.jpg'; 
+import img from '../assets/foto-boceto.jpg'; 
 
 
 
@@ -125,7 +126,7 @@ const Manual = () => {
         {/* Sección 5: Generar mediante fotos */}
       <section className="manual-section">
         <img
-          src={require("../assets/foto-boceto.jpg")} 
+          src={img}
           alt="Generar mediante fotos"
           className="section-image"
         />
