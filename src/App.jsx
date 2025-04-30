@@ -24,23 +24,33 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-      <Route path="/profile/edit" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
-      <Route path="/profile/password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
-      <Route path="/diagrams/view" element={<ProtectedRoute><StartProjectView /></ProtectedRoute>} />
-      <Route path="/vista-generada" element={<ProtectedRoute><VistaGenerada /></ProtectedRoute>} />
-      <Route path="/sala/:roomId" element={<ProtectedRoute><SalaColaborativa /></ProtectedRoute>} />
-      <Route path="/diagrams/createlienzo" element={<ProtectedRoute><Prueba /></ProtectedRoute>} />
-      <Route path="/diagrams/createlienzo/:roomId" element={<ProtectedRoute><Prueba /></ProtectedRoute>} />
-      <Route path="/diagrams/createimage" element={<ProtectedRoute><StartProjectView /></ProtectedRoute>} />
-      <Route path="/diagrams/creatediagram" element={<ProtectedRoute><VisorDiagramas /></ProtectedRoute>} />
-      <Route path="/generar-angular" element={<ProtectedRoute><GenerarAngular /></ProtectedRoute>} />
-      <Route path="/users" element={<ProtectedRoute><ListaUsuarios /></ProtectedRoute>} />
-      <Route path="/diagrams/configurar-sala/:roomId" element={<ProtectedRoute><ConfigurarSala /></ProtectedRoute>} />
-      <Route path="/logs" element={<ProtectedRoute><LogsView /></ProtectedRoute>} />
-      <Route path="/guardar-proyecto" element={<ProtectedRoute><GuardarProyecto /></ProtectedRoute>} />
-      <Route path="/diagrams/mis-proyectos" element={<ProtectedRoute><MisProyectos /></ProtectedRoute>} />
-      <Route path="/manual" element={<ProtectedRoute><Manual /></ProtectedRoute>} />
+        <Route path="/" element={<Login/>}/>
+        <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/profile/edit" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
+        <Route path="/profile/password" element={<ProtectedRoute><ChangePassword /></ProtectedRoute>} />
+        <Route path="/diagrams/view" element={<ProtectedRoute><StartProjectView /></ProtectedRoute>} />
+        <Route path="/vista-generada" element={<ProtectedRoute><VistaGenerada /></ProtectedRoute>} />
+        <Route path="/sala/:roomId" element={<ProtectedRoute><SalaColaborativa /></ProtectedRoute>} />
+        <Route path="/diagrams/createlienzo" element={<ProtectedRoute><Prueba /></ProtectedRoute>} />
+        <Route path="/diagrams/createlienzo/:roomId" element={<ProtectedRoute><Prueba /></ProtectedRoute>} />
+        <Route path="/diagrams/createimage" element={<ProtectedRoute><StartProjectView /></ProtectedRoute>} />
+        <Route path="/diagrams/creatediagram" element={<ProtectedRoute><VisorDiagramas /></ProtectedRoute>} />
+        <Route path="/generar-angular" element={<ProtectedRoute><GenerarAngular /></ProtectedRoute>} />
+        <Route path="/users" element={<ProtectedRoute><ListaUsuarios /></ProtectedRoute>} />
+        <Route path="/diagrams/configurar-sala/:roomId" element={<ProtectedRoute><ConfigurarSala /></ProtectedRoute>} />
+        <Route path="/logs" element={<ProtectedRoute><LogsView /></ProtectedRoute>} />
+        <Route path="/guardar-proyecto" element={<ProtectedRoute><GuardarProyecto /></ProtectedRoute>} />
+        <Route path="/diagrams/mis-proyectos" element={<ProtectedRoute><MisProyectos /></ProtectedRoute>} />
+        <Route path="/manual" element={<ProtectedRoute><Manual /></ProtectedRoute>} />
+
+
+
+
+
+
+
+
+        
 
       </Routes>
     </BrowserRouter>
