@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import Navbar from "./Navbar";
+import "../styles/vista-generada.css"; // ✅ Mantiene tus estilos de la página
 
 const VistaGenerada = () => {
   const location = useLocation();
@@ -26,21 +27,8 @@ const VistaGenerada = () => {
     <>
       <Navbar />
 
-      {/*  Estilos embebidos para vista generada */}
+      {/* ✅ Solo estilos adicionales para el formulario */}
       <style>{`
-        body {
-          margin: 0;
-          background-color: #f8f9fa;
-        }
-
-        .vista-container {
-          font-family: Arial, sans-serif;
-          padding: 30px 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
         .form-wrapper {
           background: white;
           padding: 40px;
@@ -93,19 +81,6 @@ const VistaGenerada = () => {
         .form-generado th {
           background-color: #f0f0f0;
         }
-
-        .codigo-generado {
-          width: 90%;
-          max-width: 700px;
-          text-align: center;
-        }
-
-        .codigo-generado textarea {
-          width: 100%;
-          height: 200px;
-          font-family: monospace;
-          margin-bottom: 10px;
-        }
       `}</style>
 
       <div className="vista-container">
@@ -113,8 +88,8 @@ const VistaGenerada = () => {
 
         {imagePreview && (
           <>
-            <h4> Esto me pasaste:</h4>
-            <img className="vista-imagen" src={imagePreview} alt="Bosquejo" style={{ maxWidth: "100%", marginBottom: "20px" }} />
+            <h4>✅ Esto me pasaste:</h4>
+            <img className="vista-imagen" src={imagePreview} alt="Bosquejo" />
           </>
         )}
 
